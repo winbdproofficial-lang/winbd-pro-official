@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WINBD-PRO — ভার্চুয়াল গেম পোর্টাল</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { emeraldx: '#083927', gold: '#f5c518', ink: '#061f16' }, boxShadow: { glow: '0 10px 28px rgba(245,197,24,.24)' } } } }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap');
+    * { box-sizing: border-box; } body { font-family:'Hind Siliguri',sans-serif; background:#062b1e; color:white; }
+    .brand { font-family:Montserrat,sans-serif; letter-spacing:-.09em; } .latin { font-family:Montserrat,sans-serif; }
+    .bg-noise { background-image: radial-gradient(circle at 16% 12%, rgba(60,179,113,.14), transparent 26rem), radial-gradient(circle at 82% 38%, rgba(245,197,24,.08), transparent 22rem); }
+    .game-art { position:relative; overflow:hidden; isolation:isolate; } .game-art:before { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 28%,rgba(0,0,0,.74)); z-index:1; }
+    .game-art:after { content:attr(data-icon); position:absolute; color:rgba(255,255,255,.96); font:900 4rem/1 Montserrat,sans-serif; text-shadow:0 5px 14px rgba(0,0,0,.35); left:50%; top:42%; transform:translate(-50%,-50%); z-index:0; }
+    .banner-shine { background:linear-gradient(116deg, #ffd938 0%,#f5b800 32%,#e58f00 55%,#fff06a 80%,#f1ba00 100%); }
+    .nav-item:hover,.nav-item.active { color:#f5c518; background:rgba(245,197,24,.1); } .nav-item.active:before { content:''; position:absolute; left:0; width:3px; height:28px; border-radius:0 5px 5px 0; background:#f5c518; }
+    .scrollbar-none::-webkit-scrollbar { display:none; }
+    @media(max-width:767px){ .sidebar { position:fixed; z-index:30; transform:translateX(-100%); transition:transform .25s; } #menu:checked ~ .sidebar { transform:translateX(0); } }
+  </style>
+</head>
+<body class="bg-noise min-h-screen">
+  <input id="menu" type="checkbox" class="hidden">
+  <header class="sticky top-0 z-40 h-16 border-b border-white/10 bg-[#073323]/95 px-4 backdrop-blur md:px-7">
+    <div class="mx-auto flex h-full max-w-[1600px] items-center justify-between">
+      <div class="flex items-center gap-3"><label for="menu" class="cursor-pointer text-2xl text-gold md:hidden">☰</label><a href="#" class="flex items-center gap-2 brand text-[25px] font-black text-gold"><img src="assets/winbd-pro-logo.svg" class="h-9 w-9 rounded-xl" alt="WINBD-PRO">WINBD<span class="text-white">-PRO</span></a><span class="hidden text-xs text-emerald-100/60 sm:block">GAMING</span></div>
+      <div class="flex items-center gap-2"><span id="coinPill" class="hidden rounded-lg bg-white/10 px-3 py-2 text-sm text-gold sm:inline">◉ ১,০০০</span><button id="loginBtn" onclick="openAuth('login')" class="rounded-lg border border-gold/80 px-4 py-2 text-sm font-semibold text-gold transition hover:bg-gold hover:text-ink">লগইন</button><button id="registerBtn" onclick="openAuth('register')" class="rounded-lg bg-gold px-4 py-2 text-sm font-bold text-ink shadow-glow transition hover:bg-yellow-300">নিবন্ধন করুন</button></div>
+    </div>
+  </header>
+
+  <aside class="sidebar fixed bottom-0 left-0 top-16 z-20 w-64 border-r border-white/10 bg-[#062b1e] md:w-20 lg:w-64">
+    <div class="flex h-full flex-col py-5">
+      <p class="mb-3 px-6 text-[11px] font-semibold tracking-[.15em] text-white/40 lg:block">গেম ক্যাটাগরি</p>
+      <nav class="space-y-1 px-3">
+        <a class="nav-item active relative flex items-center gap-4 rounded-lg px-3 py-3 text-white/80 transition" href="#hot"><span class="grid h-7 w-7 place-items-center text-xl">🔥</span><span class="font-medium lg:block">গরম খেলা</span></a>
+        <a class="nav-item relative flex items-center gap-4 rounded-lg px-3 py-3 text-white/80 transition" href="#"><span class="grid h-7 w-7 place-items-center text-xl">🎰</span><span class="font-medium lg:block">স্লট</span></a>
+        <a class="nav-item relative flex items-center gap-4 rounded-lg px-3 py-3 text-white/80 transition" href="#"><span class="grid h-7 w-7 place-items-center text-xl">♠</span><span class="font-medium lg:block">লাইভ ক্যাসিনো</span></a>
+        <a class="nav-item relative flex items-center gap-4 rounded-lg px-3 py-3 text-white/80 transition" href="#"><span class="grid h-7 w-7 place-items-center text-xl">⚽</span><span class="font-medium lg:block">স্পোর্টস</span></a>
+        <a class="nav-item relative flex items-center gap-4 rounded-lg px-3 py-3 text-white/80 transition" href="#"><span class="grid h-7 w-7 place-items-center text-xl">🂡</span><span class="font-medium lg:block">পোকার</span></a>
+        <a class="nav-item relative flex items-center gap-4 rounded-lg px-3 py-3 text-white/80 transition" href="#"><span class="grid h-7 w-7 place-items-center text-xl">🐠</span><span class="font-medium lg:block">ফিশিং</span></a>
+      </nav>
+      <div class="mt-auto px-3"><div class="rounded-xl border border-white/10 bg-white/5 p-3 text-center lg:text-left"><span class="text-gold">✦</span><p class="mt-1 hidden text-xs text-white/60 lg:block">দৈনিক বোনাস পান</p><button onclick="claimBonus()" class="mt-2 hidden w-full rounded-md bg-white/10 py-1.5 text-xs text-white hover:bg-gold hover:text-ink lg:block">এখনই সংগ্রহ করুন</button></div></div>
+    </div>
+  </aside>
+
+  <main class="mx-auto max-w-[1600px] px-4 py-6 md:ml-20 md:px-7 lg:ml-64">
+    <section class="relative overflow-hidden rounded-2xl bg-[#0c5138] px-6 py-8 sm:px-12 sm:py-11">
+      <div class="absolute -right-16 -top-24 h-80 w-80 rounded-full bg-gold/15 blur-3xl"></div><div class="absolute bottom-0 left-[35%] text-[180px] leading-none text-white/[.045]">♛</div>
+      <div class="relative z-10 max-w-xl"><p class="latin mb-3 text-xs font-bold tracking-[.25em] text-gold">EXCLUSIVE VIRTUAL REWARDS</p><h1 class="text-3xl font-bold leading-tight sm:text-5xl">VIP আপগ্রেড বোনাস<br><span class="text-gold">১০,০০০ কয়েন পর্যন্ত</span></h1><p class="mt-3 max-w-md text-sm text-emerald-50/75 sm:text-base">লেভেল আপ করুন, আরও বেশি খেলুন এবং ভার্চুয়াল রিওয়ার্ড সংগ্রহ করুন।</p><button onclick="openProfile()" class="mt-6 rounded-lg bg-gold px-6 py-3 font-bold text-ink shadow-glow transition hover:scale-[1.03]">প্রোফাইল দেখুন <span class="ml-2">→</span></button></div>
+      <div class="banner-shine absolute bottom-0 left-0 h-1 w-full"></div><div class="absolute bottom-5 right-6 z-10 flex gap-2"><span class="h-2 w-6 rounded-full bg-gold"></span><span class="h-2 w-2 rounded-full bg-white/40"></span><span class="h-2 w-2 rounded-full bg-white/40"></span></div>
+    </section>
+
+    <section id="hot" class="mt-8"><div class="mb-4 flex items-end justify-between"><div><p class="text-xs text-gold">জনপ্রিয় পছন্দসমূহ</p><h2 class="text-2xl font-bold">🔥 গরম খেলা</h2></div><a href="#" class="text-sm font-semibold text-gold hover:text-yellow-300">সবগুলো দেখুন →</a></div>
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <a href="#" onclick="playGame(event,'Lucky 777')" class="group overflow-hidden rounded-xl bg-[#0a442f] shadow-lg ring-1 ring-white/10 transition hover:-translate-y-1 hover:ring-gold/60"><div data-icon="777" class="game-art h-36 bg-[linear-gradient(135deg,#e92535,#8c1020)] sm:h-44"><span class="absolute left-3 top-3 z-10 rounded bg-gold px-2 py-1 text-[10px] font-bold text-ink">HOT</span><span class="absolute bottom-2 left-3 z-10 font-bold">Lucky 777</span></div><div class="flex items-center justify-between px-3 py-2 text-xs text-white/60"><span>ডেমো গেম</span><span class="text-gold">★ 4.9</span></div></a>
+        <a href="#" onclick="playGame(event,'Royal Treasure')" class="group overflow-hidden rounded-xl bg-[#0a442f] shadow-lg ring-1 ring-white/10 transition hover:-translate-y-1 hover:ring-gold/60"><div data-icon="♛" class="game-art h-36 bg-[linear-gradient(135deg,#35155d,#b73375)] sm:h-44"><span class="absolute bottom-2 left-3 z-10 font-bold">Royal Treasure</span></div><div class="flex items-center justify-between px-3 py-2 text-xs text-white/60"><span>ডেমো গেম</span><span class="text-gold">★ 4.8</span></div></a>
+        <a href="#" onclick="playGame(event,'Fortune Tiger')" class="group overflow-hidden rounded-xl bg-[#0a442f] shadow-lg ring-1 ring-white/10 transition hover:-translate-y-1 hover:ring-gold/60"><div data-icon="🐯" class="game-art h-36 bg-[linear-gradient(135deg,#fe8b21,#dc2731)] sm:h-44"><span class="absolute bottom-2 left-3 z-10 font-bold">Fortune Tiger</span></div><div class="flex items-center justify-between px-3 py-2 text-xs text-white/60"><span>ডেমো গেম</span><span class="text-gold">★ 4.9</span></div></a>
+        <a href="#" onclick="playGame(event,'Diamond Rush')" class="group overflow-hidden rounded-xl bg-[#0a442f] shadow-lg ring-1 ring-white/10 transition hover:-translate-y-1 hover:ring-gold/60"><div data-icon="♦" class="game-art h-36 bg-[linear-gradient(135deg,#054a85,#00a7b3)] sm:h-44"><span class="absolute bottom-2 left-3 z-10 font-bold">Diamond Rush</span></div><div class="flex items-center justify-between px-3 py-2 text-xs text-white/60"><span>ডেমো গেম</span><span class="text-gold">★ 4.7</span></div></a>
+        <a href="#" onclick="playGame(event,'Dragon Legend')" class="group overflow-hidden rounded-xl bg-[#0a442f] shadow-lg ring-1 ring-white/10 transition hover:-translate-y-1 hover:ring-gold/60"><div data-icon="🐉" class="game-art h-36 bg-[linear-gradient(135deg,#095b54,#0e9f6e)] sm:h-44"><span class="absolute bottom-2 left-3 z-10 font-bold">Dragon Legend</span></div><div class="flex items-center justify-between px-3 py-2 text-xs text-white/60"><span>ডেমো গেম</span><span class="text-gold">★ 4.8</span></div></a>
+      </div>
+    </section>
+    <section class="mt-8 grid gap-4 sm:grid-cols-3"><div class="rounded-xl border border-gold/15 bg-gold/10 p-4"><span class="text-xl">🪙</span><p class="mt-1 font-semibold">ভার্চুয়াল কয়েন</p><p class="text-sm text-white/60">কোনো নগদ মূল্য বা পেমেন্ট নেই</p></div><div class="rounded-xl border border-gold/15 bg-gold/10 p-4"><span class="text-xl">🎁</span><p class="mt-1 font-semibold">বিশেষ বোনাস</p><p class="text-sm text-white/60">প্রতিদিন নতুন রিওয়ার্ড সংগ্রহ করুন</p></div><div class="rounded-xl border border-gold/15 bg-gold/10 p-4"><span class="text-xl">🛡</span><p class="mt-1 font-semibold">প্রাইভেট প্রোফাইল</p><p class="text-sm text-white/60">এই ডেমোতে তথ্য শুধু আপনার ব্রাউজারে থাকে</p></div></section>
+  </main>
+  <div class="fixed bottom-5 right-4 z-30 flex flex-col gap-3"><button aria-label="Telegram" class="grid h-11 w-11 place-items-center rounded-full bg-[#229ED9] text-xl shadow-lg transition hover:scale-110">✈</button><button aria-label="Live support" class="grid h-11 w-11 place-items-center rounded-full bg-gold text-xl text-ink shadow-glow transition hover:scale-110">💬</button></div>
+  <button onclick="openProfile()" class="fixed bottom-5 left-4 z-30 rounded-full border border-white/20 bg-[#073323] px-3 py-2 text-xs font-semibold shadow-lg">আমার প্রোফাইল</button>
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4"><div class="w-full max-w-md rounded-2xl bg-[#073323] p-6 ring-1 ring-white/15"><button onclick="closeModal()" class="float-right text-xl text-white/60">×</button><div id="modalContent"></div></div></div>
+  <script>
+    const freeApi={getUser:()=>JSON.parse(localStorage.getItem('winbd-pro-user')||'null'),saveUser:u=>localStorage.setItem('winbd-pro-user',JSON.stringify(u))};
+    const modal=document.querySelector('#modal'), content=document.querySelector('#modalContent');
+    function show(html){content.innerHTML=html;modal.classList.remove('hidden');modal.classList.add('flex')} function closeModal(){modal.classList.add('hidden');modal.classList.remove('flex')}
+    function openAuth(mode){show(`<h2 class="text-2xl font-bold text-gold">${mode==='login'?'লগইন করুন':'অ্যাকাউন্ট খুলুন'}</h2><form class="mt-4 space-y-3" onsubmit="submitAuth(event,'${mode}')">${mode==='register'?'<input name="name" required placeholder="আপনার নাম" class="w-full rounded-lg bg-white/10 p-3 outline-none ring-1 ring-white/15">':''}<input name="email" required type="email" placeholder="ইমেইল" class="w-full rounded-lg bg-white/10 p-3 outline-none ring-1 ring-white/15"><input name="password" required type="password" minlength="6" placeholder="পাসওয়ার্ড" class="w-full rounded-lg bg-white/10 p-3 outline-none ring-1 ring-white/15"><button class="w-full rounded-lg bg-gold p-3 font-bold text-ink">${mode==='login'?'লগইন':'রেজিস্ট্রেশন'}</button></form><p class="mt-4 text-xs text-white/50">ডেমো: তথ্য শুধুমাত্র এই ব্রাউজারে সংরক্ষিত হয়।</p>`)}
+    function submitAuth(e,mode){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));let u=freeApi.getUser();if(mode==='login'&&(!u||u.email!==f.email||u.password!==f.password))return alert('এই ব্রাউজারে এমন অ্যাকাউন্ট পাওয়া যায়নি। আগে রেজিস্ট্রেশন করুন।');if(mode==='register')u={name:f.name,email:f.email,password:f.password,coins:1000,bonusDate:null,played:0};freeApi.saveUser(u);closeModal();updateUI();alert('স্বাগতম, '+u.name+'! আপনি ১,০০০ ভার্চুয়াল কয়েন পেয়েছেন।')}
+    function updateUI(){let u=freeApi.getUser();if(!u)return;coinPill.textContent='◉ '+u.coins.toLocaleString('bn-BD');loginBtn.textContent='প্রোফাইল';loginBtn.onclick=openProfile;registerBtn.textContent='লগআউট';registerBtn.onclick=()=>{localStorage.removeItem('winbd-pro-user');location.reload()}}
+    function openProfile(){let u=freeApi.getUser();if(!u)return openAuth('login');show(`<h2 class="text-2xl font-bold text-gold">${u.name}</h2><p class="text-white/60">${u.email}</p><div class="my-5 grid grid-cols-2 gap-3"><div class="rounded-xl bg-white/10 p-3"><b class="text-gold">${u.coins}</b><br><small>ভার্চুয়াল কয়েন</small></div><div class="rounded-xl bg-white/10 p-3"><b class="text-gold">${u.played}</b><br><small>খেলা হয়েছে</small></div></div><button onclick="claimBonus()" class="w-full rounded-lg bg-gold p-3 font-bold text-ink">দৈনিক বোনাস সংগ্রহ করুন</button><p class="mt-3 text-xs text-white/50">কয়েনের কোনো নগদ মূল্য নেই।</p>`)}
+    function claimBonus(){let u=freeApi.getUser();if(!u)return openAuth('register');let today=new Date().toDateString();if(u.bonusDate===today)return alert('আজকের বোনাস ইতিমধ্যে নেওয়া হয়েছে।');u.coins+=100;u.bonusDate=today;freeApi.saveUser(u);updateUI();closeModal();alert('🎁 ১০০ ভার্চুয়াল কয়েন যোগ হয়েছে!')}
+    function playGame(e,name){e.preventDefault();let u=freeApi.getUser();if(!u)return openAuth('register');let win=Math.random()>.45,reward=win?Math.floor(Math.random()*120)+40:0;u.coins+=reward;u.played++;freeApi.saveUser(u);updateUI();show(`<h2 class="text-2xl font-bold text-gold">${name}</h2><p class="mt-4 text-lg">${win?'🎉 আপনি '+reward+' কয়েন জিতেছেন!':'🙂 এই রাউন্ডে কোনো কয়েন জেতেননি।'}</p><p class="mt-2 text-sm text-white/50">এটি সম্পূর্ণ ভার্চুয়াল ডেমো গেম।</p><button onclick="closeModal()" class="mt-5 rounded-lg bg-gold px-5 py-2 font-bold text-ink">ঠিক আছে</button>`)}
+    updateUI();
+  </script>
+</body>
+</html>

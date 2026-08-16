@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">WINBD-PRO</string>
+    <string name="title_activity_main">WINBD-PRO</string>
+    <string name="package_name">com.winbdpro.virtualgames</string>
+    <string name="custom_url_scheme">com.winbdpro.virtualgames</string>
+</resources>

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="WINBD-PRO logo">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe36b"/><stop offset="1" stop-color="#e79d00"/></linearGradient></defs>
+  <rect width="256" height="256" rx="64" fill="#073323"/><path d="M48 61h36l19 83 20-56h27l20 56 19-83h36l-35 134h-33l-20-60-21 60H83z" fill="url(#g)"/><circle cx="203" cy="55" r="18" fill="#fff2a0"/><path d="M203 26l5 17 17 5-17 5-5 17-5-17-17-5 17-5z" fill="#f5c518"/>
+</svg>
